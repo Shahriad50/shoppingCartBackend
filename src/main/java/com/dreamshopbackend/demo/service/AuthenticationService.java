@@ -5,8 +5,8 @@ import com.dreamshopbackend.demo.Controller.AuthenticationResponse;
 import com.dreamshopbackend.demo.Controller.RegisterRequest;
 import com.dreamshopbackend.demo.config.JwtService.JwtService;
 import com.dreamshopbackend.demo.repository.UserRepository;
-import com.dreamshopbackend.demo.user.Role;
-import com.dreamshopbackend.demo.user.User;
+import com.dreamshopbackend.demo.entity.Role;
+import com.dreamshopbackend.demo.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository repository;
@@ -22,12 +22,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-    public AuthenticationService(UserRepository repository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService) {
-        this.repository = repository;
-        this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
-        this.jwtService = jwtService;
-    }
+
 
     public AuthenticationResponse register(RegisterRequest request){
         var user= User.builder()

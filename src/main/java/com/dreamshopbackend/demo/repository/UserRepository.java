@@ -1,6 +1,6 @@
 package com.dreamshopbackend.demo.repository;
 
-import com.dreamshopbackend.demo.user.User;
+import com.dreamshopbackend.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

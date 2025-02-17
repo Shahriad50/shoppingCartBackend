@@ -1,4 +1,4 @@
-package com.dreamshopbackend.demo.user;
+package com.dreamshopbackend.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.dreamshopbackend.demo.Controller;
 
-import com.dreamshopbackend.demo.user.Role;
+import com.dreamshopbackend.demo.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -18,15 +18,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 
 public class ApplicationConfig {//hold all the application configuration like bean  
 
     private final UserRepository repository;
 
-    public ApplicationConfig(UserRepository repository) {
-        this.repository = repository;
-    }
+
 
 
     @Bean 
