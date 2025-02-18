@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,10 @@ public class Image {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long image_id;
-        List<String> downloadUrl;
+        private String file_name;
+        private String file_type;
+        List<String> download_url;
+        private Blob image;
 
         @ManyToOne
         @JoinColumn(name = "product_id")
