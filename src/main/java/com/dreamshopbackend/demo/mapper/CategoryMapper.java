@@ -4,11 +4,21 @@ import com.dreamshopbackend.demo.entity.Category;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring")
-public interface CategoryMapper {
-    CategoryMapper INSTANCE= Mappers.getMapper(CategoryMapper.class);
-        CategoryDto maptoCategoryDto(Category category);
-
-        Category mapToCategory(CategoryDto dto);
+@Component
+public class CategoryMapper {
+       public static CategoryDto mapToCategoryDto(Category category){
+                return new CategoryDto(
+                   category.getCategory_id(),
+                   category.getCategory_name(),
+                        category.getProducts()
+                   );
+       }
+       public static Category mapToCategory(CategoryDto categoryDto){
+           Category category = new Category();
+           category.setCategory_id(categoryDto.getCategory_id());
+           category.setCategory_name(categoryDto.getCategory_name());
+           return category;
+       }
 }

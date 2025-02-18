@@ -2,13 +2,10 @@ package com.dreamshopbackend.demo.dto;
 
 import com.dreamshopbackend.demo.entity.Product;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
-
+    @Builder
     @Getter
     @Setter
     @AllArgsConstructor

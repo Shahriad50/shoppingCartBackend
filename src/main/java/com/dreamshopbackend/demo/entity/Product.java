@@ -31,6 +31,6 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product", orphanRemoval = true)
-    private List<Image> images;
+//    @OneToMany(mappedBy = "product", orphanRemoval = true)
+//    private List<Image> images;
 }

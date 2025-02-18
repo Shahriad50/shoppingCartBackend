@@ -22,10 +22,11 @@ public class ProductServiceImpl implements ProductService{
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
-    private final ImageRepository brandRepository;
+    private final ImageRepository ImageRepository;
+    private final ProductMapper productMapper;
     @Override
     public ProductDto addProduct(ProductDto productDto){
-        Product product = ProductMapper.toProduct(productDto);
+        Product product = productMapper.mapToProduct(productDto);
         // Set category
         product.setCategory(categoryRepository.findById(productDto.getCategory_id())
                 .orElseThrow(() -> new RuntimeException("Category not found")));
@@ -37,7 +38,7 @@ public class ProductServiceImpl implements ProductService{
 //                .collect(Collectors.toList());
 //        product.setImages(images);
         Product savedProduct = productRepository.save(product);
-        return ProductMapper.toProductDTO(savedProduct);
+        return productMapper.mapToProductDto(savedProduct);
     }
     @Override
     public void updateProduct(ProductDto productDto){
@@ -52,7 +53,7 @@ public class ProductServiceImpl implements ProductService{
     public ProductDto getProduct(Long id) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
         // Conversion of Product to ProductDto should be implemented in a mapper method
-        return ProductMapper.toProductDTO(product);
+        return productMapper.mapToProductDto(product);
     }
 
     @Override
@@ -61,7 +62,7 @@ public class ProductServiceImpl implements ProductService{
         List<ProductDto> productDtos = new ArrayList<>();
         for (Product product : products) {
             // Conversion of Product to ProductDto should be implemented in a mapper method
-            productDtos.add(ProductMapper.toProductDTO(product));
+            productDtos.add(productMapper.mapToProductDto(product));
         }
         return productDtos;
     }
@@ -69,7 +70,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductDto> findByCategory(Long categoryId) {
         List<Product> products = productRepository.findAllByCategory(categoryId);
-        return products.stream().map(product -> ProductMapper.toProductDTO(product)).collect(java.util.stream.Collectors.toList());
+        return products.stream().map(productMapper::mapToProductDto).collect(java.util.stream.Collectors.toList());
     }
 
     @Override

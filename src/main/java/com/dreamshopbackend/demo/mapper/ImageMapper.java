@@ -9,8 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface ImageMapper {
-    CategoryMapper INSTANCE= Mappers.getMapper(CategoryMapper.class);
-    ImageDto mapToImageDto(Image imageDto);
+      ImageDto mapToImageDto(Image imageDto);
 
     Image mapToImage(ImageDto dto);
 }

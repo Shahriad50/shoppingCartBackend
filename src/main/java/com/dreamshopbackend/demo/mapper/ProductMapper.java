@@ -2,15 +2,15 @@ package com.dreamshopbackend.demo.mapper;
 
 import com.dreamshopbackend.demo.dto.ProductDto;
 import com.dreamshopbackend.demo.entity.Product;
-import com.dreamshopbackend.demo.entity.Image;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class ProductMapper {
-
-    // Convert Product entity to ProductDTO
-    public static ProductDto toProductDTO(Product product) {
+// Convert Product entity to ProductDTO
+@Component
+public class ProductMapper{
+    public ProductDto mapToProductDto(Product product) {
         ProductDto productDTO = new ProductDto();
         productDTO.setProduct_id(product.getProduct_id());
         productDTO.setProduct_name(product.getProduct_name());
@@ -39,7 +39,7 @@ public class ProductMapper {
     }
 
     // Convert ProductDTO to Product entity
-    public static Product toProduct(ProductDto productDTO) {
+    public static Product mapToProduct(ProductDto productDTO) {
         Product product = new Product();
         product.setProduct_id(productDTO.getProduct_id());
         product.setProduct_name(productDTO.getProduct_name());
